@@ -1,0 +1,44 @@
+.DS_Store
+build
+*.pbxuser
+*.perspectivev3
+*.mode1v3
+*.lock
+.svn
+UserInterfaceState.xcuserstate
+xcuserdata
+*.class
+*.swp
+.pyc
+# Operating System Files
+
+*.DS_Store
+Thumbs.db
+*.sw?
+.#*
+*#
+*~
+*.sublime-*
+*.log
+# Build Artifacts
+
+.gradle/
+build/
+target/
+bin/
+dependency-reduced-pom.xml
+
+# Eclipse Project Files
+
+.classpath
+.project
+.settings/
+
+# IntelliJ IDEA Files
+
+*.iml
+*.ipr
+*.iws
+*.idea
+
+README.html
