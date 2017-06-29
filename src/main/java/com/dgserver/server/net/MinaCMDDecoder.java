@@ -26,7 +26,7 @@ public class MinaCMDDecoder extends CumulativeProtocolDecoder {
      */
     @Override
     protected boolean doDecode(IoSession is, IoBuffer ib, ProtocolDecoderOutput pdo) throws Exception {
-    	logger.info("HandleMessage");
+//    	logger.info("HandleMessage");
     	int remain = ib.remaining();
 //    	System.out.println("remain : " + remain);
     	if(remain < 4) {
@@ -39,7 +39,7 @@ public class MinaCMDDecoder extends CumulativeProtocolDecoder {
     		return false;
     	}
     	int protocol = ib.getInt(basePos + 4);
-    	logger.debug("protocol : " + protocol);
+//    	logger.debug("protocol : " + protocol);
     	
     	byte[] destBytes = new byte[4+length];
     	
@@ -55,23 +55,32 @@ public class MinaCMDDecoder extends CumulativeProtocolDecoder {
 			BaseServer server = ServerManager.GetInstance().getServerList().get(protocol);
 			BaseMessage message = server.GetRequest();
 			if(message != null){
-				message.deserialize(buff);
-				
-				UserInfo userInfo = null;
-				if(protocol == 0x100) {
-					//创建用户信息
-					userInfo = new UserInfo();
-					userInfo.deserialize(buff);
-					userInfo.setSession(is);
-				}else {
-					userInfo = ServerManager.GetInstance().getUserInfo(is);
+				try{
+					message.deserialize(buff);
+					
+					UserInfo userInfo = null;
+					if(protocol == 0x100) {
+						//创建用户信息
+						userInfo = new UserInfo();
+						userInfo.deserialize(buff);
+						userInfo.setSession(is);
+					}else {
+						userInfo = ServerManager.GetInstance().getUserInfo(is);
+					}
+					if(userInfo == null){
+						return true;
+					}
+					message.setUserInfo(userInfo);
+					
+					BaseMessage msg = server.handle(is,message);
+					if(msg != null){
+						is.write(msg);
+					}
+				}catch(Exception e){
+					e.printStackTrace();
+					return true;
 				}
-				message.setUserInfo(userInfo);
 				
-				BaseMessage msg = server.handle(is,message);
-				if(msg != null){
-					is.write(msg);
-				}
 			}
 		}
         return true;

@@ -14,7 +14,7 @@ public class ServerHandler extends IoHandlerAdapter  {
 	Logger logger = Logger.getLogger(ServerHandler.class);
 	
 	public ServerHandler(){
-		logger.info("ServerHandler init");
+		//logger.info("ServerHandler init");
 	} 
 	
 	/**
@@ -22,7 +22,7 @@ public class ServerHandler extends IoHandlerAdapter  {
      */
     @Override
     public void messageSent(IoSession session, Object message) {
-        System.out.println("messageSent");
+        //System.out.println("messageSent");
     }
 
     /**
@@ -30,7 +30,7 @@ public class ServerHandler extends IoHandlerAdapter  {
      */
     @Override
     public void messageReceived(IoSession session, Object message) {
-        System.out.println("messageReceived");
+        //System.out.println("messageReceived");
     }
 
 
@@ -39,7 +39,7 @@ public class ServerHandler extends IoHandlerAdapter  {
      */
     @Override
     public void exceptionCaught(IoSession session, Throwable cause) {
-        System.out.println("exceptionCaught");
+//        System.out.println("exceptionCaught");
         if (cause instanceof IOException) {  
             logger.info("处理请求出现IO异常 " + session, cause);  
             session.close(true);
@@ -76,6 +76,7 @@ public class ServerHandler extends IoHandlerAdapter  {
         System.out.println("sessionClosed " + session.getRemoteAddress().toString());
         //session关闭时删除绑定数据
         ServerManager.GetInstance().RemovePlayerBySId(session.getId());
+        session.close(true);
     }
 
     /**
@@ -83,7 +84,7 @@ public class ServerHandler extends IoHandlerAdapter  {
      */
     @Override
     public void sessionOpened(IoSession session) {
-        System.out.println("sessionOpened " + session.getRemoteAddress().toString());
+        //System.out.println("sessionOpened " + session.getRemoteAddress().toString());
     }
 
     /**
@@ -91,6 +92,6 @@ public class ServerHandler extends IoHandlerAdapter  {
      */
     @Override
     public void sessionCreated(IoSession session) {
-        System.out.println("sessionCreated : " + session.getId());
+        //System.out.println("sessionCreated : " + session.getId());
     }
 }

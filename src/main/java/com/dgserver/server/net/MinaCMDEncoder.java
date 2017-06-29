@@ -23,16 +23,19 @@ public class MinaCMDEncoder implements ProtocolEncoder {
 	public void encode(IoSession session, Object message, ProtocolEncoderOutput out)
             throws Exception {
 //        System.out.println("编码");
+		try{
+			JoyBuffer joyBuffer = JoyBuffer.allocate(256);
 
-        JoyBuffer joyBuffer = JoyBuffer.allocate(256);
-
-        BaseMessage msg = (BaseMessage)message;
-        //用户信息
-        //msg.getUserInfo().serialize(joyBuffer);
-        msg.serialize(joyBuffer);
-        joyBuffer.putInt(0,joyBuffer.position() - 4);
-        byte[] buffer = joyBuffer.arrayToPosition();
-        out.write(IoBuffer.wrap(buffer));
+	        BaseMessage msg = (BaseMessage)message;
+	        //用户信息
+	        //msg.getUserInfo().serialize(joyBuffer);
+	        msg.serialize(joyBuffer);
+	        joyBuffer.putInt(0,joyBuffer.position() - 4);
+	        byte[] buffer = joyBuffer.arrayToPosition();
+	        out.write(IoBuffer.wrap(buffer));
+		}catch(Exception e){
+			e.printStackTrace();
+		}
     }
 
     public void dispose(IoSession is) throws Exception {

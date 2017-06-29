@@ -17,7 +17,7 @@ public class ServerManager {
 	private static ServerManager instance;
 	private static final Logger logger = LoggerFactory.getLogger(ServerManager.class);
 	
-	/**
+	/** 
 	 * 保存游戏中的所有服务
 	 */
 	private Map<Integer,BaseServer> serverList = new ConcurrentHashMap<Integer,BaseServer>();
@@ -27,10 +27,11 @@ public class ServerManager {
 	private Map<Long, UserInfo> sessionMap = new ConcurrentHashMap<Long, UserInfo>();
 
     // 服务器监听端口  
-	private static final int PORT = 9999;
+	private static int PORT = 9998;
 	
-	public ServerManager(){
+	public ServerManager(int port){
 		instance = this;
+		PORT = port;
 	}
 	public static ServerManager GetInstance(){
 		return instance;
@@ -54,6 +55,7 @@ public class ServerManager {
         acceptor.getSessionConfig().setReadBufferSize(2048);
         //acceptor.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 10);  
         
+        logger.info("PORT : " + PORT);
         try {  
             // 服务器开始监听  
             acceptor.bind( new InetSocketAddress(PORT) );
@@ -73,7 +75,7 @@ public class ServerManager {
 	public void BindUserInfo(UserInfo userInfo) {
 		RemovePlayer(userInfo);
 		sessionMap.put(userInfo.getSession().getId(), userInfo);
-		System.out.println("bind player session : " + userInfo.uid);
+		//System.out.println("bind player session : " + userInfo.uid);
 	}
 	
 	public void RemovePlayer(UserInfo userInfo) {		

@@ -39,7 +39,7 @@ public class App
 			}
         });
 
-    	ServerManager server = new ServerManager();
+    	ServerManager server = new ServerManager(9998);
 		server.Start();
 		
     	app.start();

@@ -11,23 +11,19 @@ public class BaseMessage implements Serializable{
 	
 	private UserInfo userInfo = null;
 	private int length;
-	private byte msgType = 0;
-	private byte result = 0;
+	private int version;
 	
 	public int GetProtocol(){
 		return 0;
 	}
-    public void serialize(JoyBuffer in){
-    	in.skip(4);
-		in.putInt(GetProtocol());
-    	in.put(msgType);
-    	in.put(result);
+    public void serialize(JoyBuffer buf){
+    	buf.skip(4);
+    	buf.putInt(GetProtocol());
     }
-    public void deserialize(JoyBuffer in){
-    	length = in.getInt();//长度
-    	in.getInt();//协议id
-    	msgType = in.get();
-    	result = in.get();
+    public void deserialize(JoyBuffer buf){
+    	length = buf.getInt();//长度
+    	buf.getInt();//协议id
+    	version = buf.get();
     }
 	public UserInfo getUserInfo() {
 		return userInfo;
@@ -39,23 +35,17 @@ public class BaseMessage implements Serializable{
 	public void Send(){
 		ServerManager.GetInstance().SendMessage(this);
 	}
-	public byte getMsgType() {
-		return msgType;
-	}
-	public void setMsgType(byte msgType) {
-		this.msgType = msgType;
-	}
-	public byte getResult() {
-		return result;
-	}
-	public void setResult(byte result) {
-		this.result = result;
-	}
 	public int getLength() {
 		return length;
 	}
 	public void setLength(int length) {
 		this.length = length;
+	}
+	public int getVersion() {
+		return version;
+	}
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 }
