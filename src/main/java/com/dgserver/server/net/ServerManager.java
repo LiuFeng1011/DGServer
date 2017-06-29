@@ -119,7 +119,11 @@ public class ServerManager {
 		if(is.isClosing()) {
 			return;
 		}
-		is.write(msg);
+		try{
+			is.write(msg);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	
 	public UserInfo getUserInfo(IoSession session) {

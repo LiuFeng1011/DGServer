@@ -1,6 +1,6 @@
 package com.dgserver.server.net.module;
 
-import com.dgserver.server.net.buffer.JoyBuffer;
+import com.dgserver.server.net.buffer.MyBuffer;
 
 public class ServerModuleBase implements ServerModule {
 
@@ -9,12 +9,12 @@ public class ServerModuleBase implements ServerModule {
 		return 0;
 	}
 
-	public void serialize(JoyBuffer out) {
+	public void serialize(MyBuffer out) {
 		// TODO Auto-generated method stub
 		out.putInt(getModuleType());
 	}
 
-	public void deserialize(JoyBuffer in) {
+	public void deserialize(MyBuffer in) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -1,6 +1,6 @@
 package com.dgserver.server.net;
 
-import com.dgserver.server.net.buffer.JoyBuffer;
+import com.dgserver.server.net.buffer.MyBuffer;
 import java.io.Serializable;
 
 public class BaseMessage implements Serializable{
@@ -16,11 +16,11 @@ public class BaseMessage implements Serializable{
 	public int GetProtocol(){
 		return 0;
 	}
-    public void serialize(JoyBuffer buf){
+    public void serialize(MyBuffer buf){
     	buf.skip(4);
     	buf.putInt(GetProtocol());
     }
-    public void deserialize(JoyBuffer buf){
+    public void deserialize(MyBuffer buf){
     	length = buf.getInt();//长度
     	buf.getInt();//协议id
     	version = buf.get();

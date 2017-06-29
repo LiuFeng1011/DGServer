@@ -12,7 +12,7 @@ import org.apache.mina.filter.codec.ProtocolDecoderOutput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.dgserver.server.net.buffer.JoyBuffer;
+import com.dgserver.server.net.buffer.MyBuffer;
 
 /**
  *解码器，解开消息的格式，变成可以处理的数据格式。
@@ -43,7 +43,7 @@ public class MinaCMDDecoder extends CumulativeProtocolDecoder {
     	
     	byte[] destBytes = new byte[4+length];
     	
-		JoyBuffer buff = JoyBuffer.wrap(destBytes);
+		MyBuffer buff = MyBuffer.wrap(destBytes);
 		ib.get(destBytes, 0, destBytes.length);
 
 		/**

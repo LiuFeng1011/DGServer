@@ -209,51 +209,8 @@ public class ExcelUtils {
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
-//		excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/配置表信息.xlsx");
+//		excelInList("/Users/reddog/Desktop/unityproj/Konan/table/info.xlsx");
 
-//		 excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/帮助表.xlsx");
-//		 excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/数值表.xlsx");
-//		 excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/宠物表.xlsx");
-//		 excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/技能表.xlsx");
-//		 excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/道具表.xlsx");
-//		 excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/副本表.xlsx");
-//		 excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/任务表.xlsx");
-		
-//		 excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/奖池表.xlsx");
-//		 excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/远征表.xlsx");
-//		 excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/竞技场表.xlsx");
-//		 excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/玩家信息.xlsx");
-//		 excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/付费表.xlsx");
-//		excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/商店表.xlsx");
-//		excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/寻找规则相关.xlsx");
-//		excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/公告.xlsx");
-//		excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/战斗血条坐标点.xlsx");
-//		 excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/战斗演示表.xlsx");
-		
-//		 excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/引导表.xlsx");
-
-		
-//		 excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/活动表.xlsx");
-//		 excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/字库表.xlsx");
-		
-		//---------------dota--------------
-//		excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/dota/0.玩家信息.xlsx");
-//		excelInList("/Users/reddog/Desktop/unityproj/Konan0./策划表/dota/1.英雄基础信息.xlsx");
-//		excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/dota/2.装备配置表.xlsx");
-//		excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/dota/3.装备洗练表.xlsx");
-//		excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/dota/4.技能设计表.xlsx");
-//		excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/dota/5.物品道具表.xlsx");
-//		excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/dota/6.竞技场配置表.xlsx");
-//		excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/dota/7.关卡配置表.xlsx");
-//		excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/dota/8.任务表.xlsx");
-//		excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/dota/9.付费表.xlsx");
-//		excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/dota/10.奖池表.xlsx");
-//		excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/dota/11.远征表.xlsx");
-//		excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/dota/12.商店表.xlsx");
-//		excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/dota/13.战斗演示表.xlsx");
-//		excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/dota/14.基地机器人.xlsx");
-//		excelInList("/Users/reddog/Desktop/unityproj/Konan/策划表/dota/15.团队副本.xlsx");
-		
 		logger.info("end<<<<<<<<<<<<<<<");
 		System.out.println("end<<<<<<<<<<<<<<<");
 	}

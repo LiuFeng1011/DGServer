@@ -1,6 +1,6 @@
 package com.dgserver.server.net.module;
 
-import com.dgserver.server.net.buffer.JoyBuffer;
+import com.dgserver.server.net.buffer.MyBuffer;
 
 public interface ServerModule {
 	/**
@@ -15,6 +15,6 @@ public interface ServerModule {
 	 * 
 	 * @param out
 	 */
-	public void serialize(JoyBuffer out);
-	public void deserialize(JoyBuffer in);
+	public void serialize(MyBuffer out);
+	public void deserialize(MyBuffer in);
 }

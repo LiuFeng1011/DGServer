@@ -2,17 +2,17 @@ package com.dgserver.server.net;
 
 import org.apache.mina.core.session.IoSession;
 
-import com.dgserver.server.net.buffer.JoyBuffer;
+import com.dgserver.server.net.buffer.MyBuffer;
 
 public class UserInfo {
 	long uid;
 	IoSession session;
-	public void serialize(JoyBuffer out)
+	public void serialize(MyBuffer out)
     {
       out.putLong(this.uid);
     }
 
-    public void deserialize(JoyBuffer in)
+    public void deserialize(MyBuffer in)
     {
       this.uid = in.getLong();
     }

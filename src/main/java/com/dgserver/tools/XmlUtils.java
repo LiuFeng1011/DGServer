@@ -34,24 +34,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
 /**
- * <p>
- * Title: XmlUtils
- * </p>
- * <p>
- * Description: XML文件处理工具
- * </p>
- * <p>
- * Copyright: Copyright (c) 2008
- * </p>
- * <p>
- * Company: Ocean Blue Mobile Tech.
- * </p>
- * 
- * @author bluesky
- * @version 1.0
- * 
- * 
- * @author Shaolong Wang 整理于 2010/11/26
+ * XML文件处理工具
  */
 public class XmlUtils {
 	public static final String BR = System.getProperty("line.separator");

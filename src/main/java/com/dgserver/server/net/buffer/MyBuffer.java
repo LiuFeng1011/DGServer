@@ -6,78 +6,78 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import org.apache.mina.core.buffer.IoBuffer;
 
-public class JoyBuffer {
+public class MyBuffer {
 	public static final byte STRING_TYPE_BYTE = 1;
 	  public static final byte STRING_TYPE_SHORT = 2;
-	  public static JoyCharset DEFAULT_CHARSET = JoyCharset.UTF_8;
+	  public static MyCharset DEFAULT_CHARSET = MyCharset.UTF_8;
 
 	  public static byte DEFAULT_STRING_TYPE = 1;
 	  private IoBuffer buffer;
 	  public static final int[] STRING_LEN_MAX = { 0, 255, 65535 };
 
-	  public static JoyBuffer allocate(int capacity)
+	  public static MyBuffer allocate(int capacity)
 	  {
-	    JoyBuffer joyBuffer = new JoyBuffer();
+	    MyBuffer myBuffer = new MyBuffer();
 
-	    joyBuffer.buffer = IoBuffer.allocate(capacity);
-	    joyBuffer.buffer.setAutoExpand(true);
+	    myBuffer.buffer = IoBuffer.allocate(capacity);
+	    myBuffer.buffer.setAutoExpand(true);
 
-	    return joyBuffer;
+	    return myBuffer;
 	  }
 
-	  public static JoyBuffer wrap(ByteBuffer buffer)
+	  public static MyBuffer wrap(ByteBuffer buffer)
 	  {
 	    return wrap(buffer, true);
 	  }
 
-	  public static JoyBuffer wrapBuffer(IoBuffer buffer, boolean isAutoExpand)
+	  public static MyBuffer wrapBuffer(IoBuffer buffer, boolean isAutoExpand)
 	  {
-	    JoyBuffer joyBuffer = new JoyBuffer();
+	    MyBuffer myBuffer = new MyBuffer();
 
-	    joyBuffer.buffer = buffer;
-	    joyBuffer.buffer.setAutoExpand(isAutoExpand);
+	    myBuffer.buffer = buffer;
+	    myBuffer.buffer.setAutoExpand(isAutoExpand);
 
-	    return joyBuffer;
+	    return myBuffer;
 	  }
 
-	  public static JoyBuffer wrap(ByteBuffer buffer, boolean isAutoExpand)
+	  public static MyBuffer wrap(ByteBuffer buffer, boolean isAutoExpand)
 	  {
-	    JoyBuffer joyBuffer = new JoyBuffer();
+	    MyBuffer myBuffer = new MyBuffer();
 
-	    joyBuffer.buffer = IoBuffer.wrap(buffer);
-	    joyBuffer.buffer.setAutoExpand(isAutoExpand);
+	    myBuffer.buffer = IoBuffer.wrap(buffer);
+	    myBuffer.buffer.setAutoExpand(isAutoExpand);
 
-	    return joyBuffer;
+	    return myBuffer;
 	  }
 
-	  public static JoyBuffer wrap(byte[] content)
+	  public static MyBuffer wrap(byte[] content)
 	  {
 	    return wrap(content, true);
 	  }
 
-	  public static JoyBuffer wrap(byte[] content, boolean isAutoExpand)
+	  public static MyBuffer wrap(byte[] content, boolean isAutoExpand)
 	  {
-	    JoyBuffer joyBuffer = new JoyBuffer();
+	    MyBuffer myBuffer = new MyBuffer();
 
-	    joyBuffer.buffer = IoBuffer.wrap(ByteBuffer.wrap(content));
+	    myBuffer.buffer = IoBuffer.wrap(ByteBuffer.wrap(content));
 
-	    joyBuffer.buffer.setAutoExpand(isAutoExpand);
+	    myBuffer.buffer.setAutoExpand(isAutoExpand);
 
-	    return joyBuffer;
+	    return myBuffer;
 	  }
 
-	  public static JoyBuffer wrap(byte[] content, int offset, int length)
+	  public static MyBuffer wrap(byte[] content, int offset, int length)
 	  {
 	    return wrap(content, offset, length, true);
 	  }
 
-	  public static JoyBuffer wrap(byte[] content, int offset, int length, boolean isAutoExpand)
+	  public static MyBuffer wrap(byte[] content, int offset, int length, boolean isAutoExpand)
 	  {
-	    JoyBuffer joyBuffer = new JoyBuffer();
-	    joyBuffer.buffer = IoBuffer.wrap(ByteBuffer.wrap(content, offset, length));
+	    MyBuffer myBuffer = new MyBuffer();
+	    myBuffer.buffer = IoBuffer.wrap(ByteBuffer.wrap(content, offset, length));
 
-	    joyBuffer.buffer.setAutoExpand(isAutoExpand);
-	    return joyBuffer;
+	    myBuffer.buffer.setAutoExpand(isAutoExpand);
+	    return myBuffer;
 	  }
 
 	  public IoBuffer buf()
@@ -95,7 +95,7 @@ public class JoyBuffer {
 	    return this.buffer.position();
 	  }
 
-	  public JoyBuffer position(int newPosition)
+	  public MyBuffer position(int newPosition)
 	  {
 	    this.buffer.position(newPosition);
 
@@ -107,14 +107,14 @@ public class JoyBuffer {
 	    return this.buffer.limit();
 	  }
 
-	  public JoyBuffer limit(int newLimit)
+	  public MyBuffer limit(int newLimit)
 	  {
 	    this.buffer.limit(newLimit);
 
 	    return this;
 	  }
 
-	  public JoyBuffer mark()
+	  public MyBuffer mark()
 	  {
 	    this.buffer.mark();
 
@@ -126,25 +126,25 @@ public class JoyBuffer {
 	    return this.buffer.markValue();
 	  }
 
-	  public JoyBuffer reset()
+	  public MyBuffer reset()
 	  {
 	    this.buffer.reset();
 	    return this;
 	  }
 
-	  public JoyBuffer clear()
+	  public MyBuffer clear()
 	  {
 	    this.buffer.clear();
 	    return this;
 	  }
 
-	  public JoyBuffer flip()
+	  public MyBuffer flip()
 	  {
 	    this.buffer.flip();
 	    return this;
 	  }
 
-	  public JoyBuffer rewind()
+	  public MyBuffer rewind()
 	  {
 	    this.buffer.rewind();
 	    return this;
@@ -160,39 +160,39 @@ public class JoyBuffer {
 	    return this.buffer.hasRemaining();
 	  }
 
-	  public JoyBuffer duplicate()
+	  public MyBuffer duplicate()
 	  {
-	    JoyBuffer joyBuffer = new JoyBuffer();
+	    MyBuffer myBuffer = new MyBuffer();
 
-	    joyBuffer.buffer = this.buffer.duplicate();
+	    myBuffer.buffer = this.buffer.duplicate();
 
-	    return joyBuffer;
+	    return myBuffer;
 	  }
 
-	  public JoyBuffer slice()
+	  public MyBuffer slice()
 	  {
-	    JoyBuffer joyBuffer = new JoyBuffer();
+	    MyBuffer myBuffer = new MyBuffer();
 
-	    joyBuffer.buffer = this.buffer.slice();
+	    myBuffer.buffer = this.buffer.slice();
 
-	    return joyBuffer;
+	    return myBuffer;
 	  }
 
-	  public JoyBuffer slice(int limit)
+	  public MyBuffer slice(int limit)
 	  {
-	    JoyBuffer joyBuffer = new JoyBuffer();
-	    joyBuffer.buffer = this.buffer.slice();
-	    joyBuffer.limit(limit);
+	    MyBuffer myBuffer = new MyBuffer();
+	    myBuffer.buffer = this.buffer.slice();
+	    myBuffer.limit(limit);
 
-	    return joyBuffer;
+	    return myBuffer;
 	  }
 
-	  public JoyBuffer sliceNew()
+	  public MyBuffer sliceNew()
 	  {
 	    return sliceNew(limit() - position());
 	  }
 
-	  public JoyBuffer sliceNew(int paramInt)
+	  public MyBuffer sliceNew(int paramInt)
 	  {
 	    return wrap(array(), position(), paramInt);
 	  }
@@ -224,7 +224,7 @@ public class JoyBuffer {
 	    return this.buffer.getUnsigned();
 	  }
 
-	  public JoyBuffer put(byte data)
+	  public MyBuffer put(byte data)
 	  {
 	    this.buffer.put(data);
 
@@ -241,19 +241,19 @@ public class JoyBuffer {
 	    return this.buffer.getUnsigned(index);
 	  }
 
-	  public JoyBuffer put(int index, byte data)
+	  public MyBuffer put(int index, byte data)
 	  {
 	    this.buffer.put(index, data);
 	    return this;
 	  }
 
-	  public JoyBuffer get(byte[] dst, int offset, int length)
+	  public MyBuffer get(byte[] dst, int offset, int length)
 	  {
 	    this.buffer.get(dst, offset, length);
 	    return this;
 	  }
 
-	  public JoyBuffer get(byte[] dst)
+	  public MyBuffer get(byte[] dst)
 	  {
 	    this.buffer.get(dst);
 	    return this;
@@ -266,28 +266,28 @@ public class JoyBuffer {
 	    return dst;
 	  }
 
-	  public JoyBuffer put(ByteBuffer src)
+	  public MyBuffer put(ByteBuffer src)
 	  {
 	    this.buffer.put(src);
 
 	    return this;
 	  }
 
-	  public JoyBuffer put(byte[] src, int offset, int length)
+	  public MyBuffer put(byte[] src, int offset, int length)
 	  {
 	    this.buffer.put(src, offset, length);
 
 	    return this;
 	  }
 
-	  public JoyBuffer put(byte[] src)
+	  public MyBuffer put(byte[] src)
 	  {
 	    this.buffer.put(src);
 
 	    return this;
 	  }
 
-	  public JoyBuffer compact()
+	  public MyBuffer compact()
 	  {
 	    this.buffer.compact();
 
@@ -299,7 +299,7 @@ public class JoyBuffer {
 	    return this.buffer.order();
 	  }
 
-	  public JoyBuffer order(ByteOrder bo)
+	  public MyBuffer order(ByteOrder bo)
 	  {
 	    this.buffer.order(bo);
 	    return this;
@@ -310,7 +310,7 @@ public class JoyBuffer {
 	    return this.buffer.getChar();
 	  }
 
-	  public JoyBuffer putChar(char value)
+	  public MyBuffer putChar(char value)
 	  {
 	    this.buffer.putChar(value);
 
@@ -322,7 +322,7 @@ public class JoyBuffer {
 	    return this.buffer.getChar(index);
 	  }
 
-	  public JoyBuffer putChar(int index, char value)
+	  public MyBuffer putChar(int index, char value)
 	  {
 	    this.buffer.putChar(index, value);
 
@@ -339,14 +339,14 @@ public class JoyBuffer {
 	    return this.buffer.getUnsignedShort();
 	  }
 
-	  public JoyBuffer putShort(short value)
+	  public MyBuffer putShort(short value)
 	  {
 	    this.buffer.putShort(value);
 
 	    return this;
 	  }
 
-	  public JoyBuffer putUnsigned(short value)
+	  public MyBuffer putUnsigned(short value)
 	  {
 	    this.buffer.put(_toUnsigned(value));
 
@@ -363,13 +363,13 @@ public class JoyBuffer {
 	    return this.buffer.getUnsignedShort(index);
 	  }
 
-	  public JoyBuffer putShort(int index, short value)
+	  public MyBuffer putShort(int index, short value)
 	  {
 	    this.buffer.putShort(index, value);
 	    return this;
 	  }
 
-	  public JoyBuffer putUnsigned(int index, short value)
+	  public MyBuffer putUnsigned(int index, short value)
 	  {
 	    this.buffer.put(index, _toUnsigned(value));
 	    return this;
@@ -405,27 +405,27 @@ public class JoyBuffer {
 	    return this.buffer.getUnsignedMediumInt(paramInt);
 	  }
 
-	  public JoyBuffer putMediumInt(int paramInt)
+	  public MyBuffer putMediumInt(int paramInt)
 	  {
 	    this.buffer.putMediumInt(paramInt);
 
 	    return this;
 	  }
 
-	  public JoyBuffer putMediumInt(int paramInt1, int paramInt2)
+	  public MyBuffer putMediumInt(int paramInt1, int paramInt2)
 	  {
 	    this.buffer.putMediumInt(paramInt1, paramInt2);
 
 	    return this;
 	  }
 
-	  public JoyBuffer putInt(int paramInt)
+	  public MyBuffer putInt(int paramInt)
 	  {
 	    this.buffer.putInt(paramInt);
 	    return this;
 	  }
 
-	  public JoyBuffer putUnsignedShort(int value)
+	  public MyBuffer putUnsignedShort(int value)
 	  {
 	    this.buffer.put(_toUnsignedShort(value));
 	    return this;
@@ -441,7 +441,7 @@ public class JoyBuffer {
 	    return this.buffer.getUnsignedInt(paramInt);
 	  }
 
-	  public JoyBuffer putUnsignedShort(int index, int byteNum)
+	  public MyBuffer putUnsignedShort(int index, int byteNum)
 	  {
 	    byte[] arrayOfByte = _toUnsignedShort(byteNum);
 	    for (int i = 0; i < arrayOfByte.length; i++)
@@ -449,7 +449,7 @@ public class JoyBuffer {
 	    return this;
 	  }
 
-	  public JoyBuffer putInt(int index, int value)
+	  public MyBuffer putInt(int index, int value)
 	  {
 	    this.buffer.putInt(index, value);
 	    return this;
@@ -460,13 +460,13 @@ public class JoyBuffer {
 	    return this.buffer.getLong();
 	  }
 
-	  public JoyBuffer putLong(long value)
+	  public MyBuffer putLong(long value)
 	  {
 	    this.buffer.putLong(value);
 	    return this;
 	  }
 
-	  public JoyBuffer putUnsignedInt(long value)
+	  public MyBuffer putUnsignedInt(long value)
 	  {
 	    this.buffer.put(_toUnsignedInt(value));
 	    return this;
@@ -477,13 +477,13 @@ public class JoyBuffer {
 	    return this.buffer.getLong(index);
 	  }
 
-	  public JoyBuffer putLong(int index, long value)
+	  public MyBuffer putLong(int index, long value)
 	  {
 	    this.buffer.putLong(index, value);
 	    return this;
 	  }
 
-	  public JoyBuffer putUnsignedInt(int index, long value)
+	  public MyBuffer putUnsignedInt(int index, long value)
 	  {
 	    byte[] arrayOfByte = _toUnsignedInt(value);
 	    for (int i = 0; i < arrayOfByte.length; i++) {
@@ -497,7 +497,7 @@ public class JoyBuffer {
 	    return this.buffer.getFloat();
 	  }
 
-	  public JoyBuffer putFloat(float value)
+	  public MyBuffer putFloat(float value)
 	  {
 	    this.buffer.putFloat(value);
 	    return this;
@@ -508,7 +508,7 @@ public class JoyBuffer {
 	    return this.buffer.getFloat(index);
 	  }
 
-	  public JoyBuffer putFloat(int index, float value)
+	  public MyBuffer putFloat(int index, float value)
 	  {
 	    this.buffer.putFloat(index, value);
 	    return this;
@@ -519,7 +519,7 @@ public class JoyBuffer {
 	    return this.buffer.getDouble();
 	  }
 
-	  public JoyBuffer putDouble(double value)
+	  public MyBuffer putDouble(double value)
 	  {
 	    this.buffer.putDouble(value);
 	    return this;
@@ -530,13 +530,13 @@ public class JoyBuffer {
 	    return this.buffer.getDouble(index);
 	  }
 
-	  public JoyBuffer putDouble(int index, double value)
+	  public MyBuffer putDouble(int index, double value)
 	  {
 	    this.buffer.putDouble(index, value);
 	    return this;
 	  }
 
-	  public String getPrefixedString(int strLenType, JoyCharset charset)
+	  public String getPrefixedString(int strLenType, MyCharset charset)
 	  {
 	    return bufferToPrefixedString(strLenType, charset);
 	  }
@@ -551,12 +551,12 @@ public class JoyBuffer {
 	    return getPrefixedString(strLenType, DEFAULT_CHARSET);
 	  }
 
-	  public String getPrefixedString(JoyCharset charset)
+	  public String getPrefixedString(MyCharset charset)
 	  {
 	    return getPrefixedString(DEFAULT_STRING_TYPE, charset);
 	  }
 
-	  public JoyBuffer putPrefixedString(String value, byte strLenType, JoyCharset charset)
+	  public MyBuffer putPrefixedString(String value, byte strLenType, MyCharset charset)
 	  {
 	    if ((strLenType != 1) && (strLenType != 2))
 	    {
@@ -583,17 +583,17 @@ public class JoyBuffer {
 	    return put(valueBytes);
 	  }
 
-	  public JoyBuffer putPrefixedString(String value)
+	  public MyBuffer putPrefixedString(String value)
 	  {
 	    return putPrefixedString(value, DEFAULT_STRING_TYPE);
 	  }
 
-	  public JoyBuffer putPrefixedString(String value, byte strLenType)
+	  public MyBuffer putPrefixedString(String value, byte strLenType)
 	  {
 	    return putPrefixedString(value, strLenType, DEFAULT_CHARSET);
 	  }
 
-	  public JoyBuffer putPrefixedString(String value, JoyCharset charset)
+	  public MyBuffer putPrefixedString(String value, MyCharset charset)
 	  {
 	    return putPrefixedString(value, DEFAULT_STRING_TYPE, charset);
 	  }
@@ -608,13 +608,13 @@ public class JoyBuffer {
 	    return this.buffer.getHexDump(lengthLimit);
 	  }
 
-	  public JoyBuffer skip(int num)
+	  public MyBuffer skip(int num)
 	  {
 	    this.buffer.skip(num);
 	    return this;
 	  }
 
-	  private String bufferToPrefixedString(int strLenType, JoyCharset charset)
+	  private String bufferToPrefixedString(int strLenType, MyCharset charset)
 	  {
 	    if ((strLenType != 1) && (strLenType != 2)) {
 	      throw new IllegalArgumentException("prefixLength must be 1 or 2");
@@ -624,7 +624,7 @@ public class JoyBuffer {
 	    return _byteArrayToString(getByteArray(byteNum), charset);
 	  }
 
-	  private String _byteArrayToString(byte[] content, JoyCharset charset)
+	  private String _byteArrayToString(byte[] content, MyCharset charset)
 	  {
 	    try
 	    {
@@ -638,7 +638,7 @@ public class JoyBuffer {
 	    return "";
 	  }
 
-	  private byte[] _stringToByteArray(String value, JoyCharset charset)
+	  private byte[] _stringToByteArray(String value, MyCharset charset)
 	  {
 	    try
 	    {
@@ -680,43 +680,43 @@ public class JoyBuffer {
 	  {
 	    String x = "测试";
 
-	    byte[] temp = x.getBytes(JoyCharset.GBK.charsetName());
+	    byte[] temp = x.getBytes(MyCharset.GBK.charsetName());
 	    IoBuffer tempBuffer = IoBuffer.wrap(temp);
 	    System.out.println("gbk:" + temp.length + "  " + tempBuffer.getHexDump());
 
-	    temp = x.getBytes(JoyCharset.UTF_8.charsetName());
+	    temp = x.getBytes(MyCharset.UTF_8.charsetName());
 	    tempBuffer = IoBuffer.wrap(temp);
 	    System.out.println("utf-8:" + temp.length + "  " + tempBuffer.getHexDump());
 
-	    temp = x.getBytes(JoyCharset.UTF_16.charsetName());
+	    temp = x.getBytes(MyCharset.UTF_16.charsetName());
 	    tempBuffer = IoBuffer.wrap(temp);
 	    System.out.println("utf-16:" + temp.length + "  " + tempBuffer.getHexDump());
 
-	    temp = x.getBytes(JoyCharset.UTF_16BE.charsetName());
+	    temp = x.getBytes(MyCharset.UTF_16BE.charsetName());
 	    tempBuffer = IoBuffer.wrap(temp);
 	    System.out.println("utf-16BE:" + temp.length + "  " + tempBuffer.getHexDump());
 
-	    temp = x.getBytes(JoyCharset.UTF_16LE.charsetName());
+	    temp = x.getBytes(MyCharset.UTF_16LE.charsetName());
 	    tempBuffer = IoBuffer.wrap(temp);
 	    System.out.println("utf-16LE:" + temp.length + "  " + tempBuffer.getHexDump());
 
-	    temp = x.getBytes(JoyCharset.UTF_32.charsetName());
+	    temp = x.getBytes(MyCharset.UTF_32.charsetName());
 	    tempBuffer = IoBuffer.wrap(temp);
 	    System.out.println("utf-32:" + temp.length + "  " + tempBuffer.getHexDump());
 
-	    temp = x.getBytes(JoyCharset.UTF_32BE.charsetName());
+	    temp = x.getBytes(MyCharset.UTF_32BE.charsetName());
 	    tempBuffer = IoBuffer.wrap(temp);
 	    System.out.println("utf-32BE:" + temp.length + "  " + tempBuffer.getHexDump());
 
-	    temp = x.getBytes(JoyCharset.UTF_32LE.charsetName());
+	    temp = x.getBytes(MyCharset.UTF_32LE.charsetName());
 	    tempBuffer = IoBuffer.wrap(temp);
 	    System.out.println("utf-32LE:" + temp.length + "  " + tempBuffer.getHexDump());
 
-	    temp = x.getBytes(JoyCharset.US_ASCII.charsetName());
+	    temp = x.getBytes(MyCharset.US_ASCII.charsetName());
 	    tempBuffer = IoBuffer.wrap(temp);
 	    System.out.println("us-ASCII:" + temp.length + "  " + tempBuffer.getHexDump());
 
-	    JoyBuffer buffer = allocate(1024);
+	    MyBuffer buffer = allocate(1024);
 	    buffer.putPrefixedString(x, (byte)2);
 
 	    buffer.rewind();

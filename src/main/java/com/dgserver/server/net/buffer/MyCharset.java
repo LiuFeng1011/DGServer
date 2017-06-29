@@ -1,6 +1,6 @@
 package com.dgserver.server.net.buffer;
 
-public enum JoyCharset {
+public enum MyCharset {
 	  UTF_8("UTF-8"), 
 
 	  UTF_16("UTF-16"), 
@@ -19,7 +19,7 @@ public enum JoyCharset {
 
 	  private String charsetName;
 
-	  private JoyCharset(String charsetName)
+	  private MyCharset(String charsetName)
 	  {
 	    this.charsetName = charsetName;
 	  }
