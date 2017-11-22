@@ -12,6 +12,9 @@ import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.alibaba.fastjson.JSON;
+import com.dgserver.server.app.ServerApp;
+
 
 public class ServerManager {
 	private static ServerManager instance;
@@ -78,7 +81,7 @@ public class ServerManager {
 		//System.out.println("bind player session : " + userInfo.uid);
 	}
 	
-	public void RemovePlayer(UserInfo userInfo) {		
+	public void RemovePlayer(UserInfo userInfo) {
 		for (Entry<Long, UserInfo> it : sessionMap.entrySet()) {
 			if(it.getValue().getUid() == userInfo.getUid()) {
 				try {
@@ -93,6 +96,12 @@ public class ServerManager {
 	
 	public void RemovePlayerBySId(long sessionId) {
 		if(sessionMap.containsKey(sessionId)) {
+			if(ServerApp.getInstance().GetUserOfflineCallBack() != null){
+				logger.error("user leave call back");
+				ServerApp.getInstance().GetUserOfflineCallBack().ServerCallBack(sessionMap.get(sessionId).getUid());
+			}else{
+				logger.error("user leave call back is null");
+			}
 			sessionMap.remove(sessionId);
 			logger.info("RemovePlayerBySId : " + sessionId);
 		}
@@ -107,18 +116,20 @@ public class ServerManager {
 	
 	public void SendMessage(BaseMessage msg){
 		if(msg.getUserInfo() == null){
-			System.out.println("userinfo is null!");
+			logger.error("userinfo is null!");
 			return;
 		}
 		
 		IoSession is = GetSession(msg.getUserInfo());
 		if(is == null){
-			System.out.println("cant find session : " + msg.getUserInfo().getUid());
+			logger.error("cant find session : " + msg.getUserInfo().getUid());
+			logger.error("msg : " + msg.GetProtocol());
 			return;
 		}
 		if(is.isClosing()) {
 			return;
 		}
+
 		try{
 			is.write(msg);
 		}catch(Exception e){

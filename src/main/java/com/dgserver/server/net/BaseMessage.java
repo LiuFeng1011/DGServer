@@ -33,6 +33,7 @@ public class BaseMessage implements Serializable{
 	}
     
 	public void Send(){
+		
 		ServerManager.GetInstance().SendMessage(this);
 	}
 	public int getLength() {

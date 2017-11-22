@@ -3,11 +3,13 @@ package com.dgserver.server.app;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.dgserver.server.net.DGServerCallBack;
+
 public class ServerApp {
 	private static final Logger logger = LoggerFactory.getLogger(ServerApp.class);
 	private static ServerApp instance;
 	private PluginManager plugins;
-	
+	private DGServerCallBack userOfflineCallBack = null;
 	public static ServerApp getInstance()
 	{
 	    if (instance == null)
@@ -75,5 +77,12 @@ public class ServerApp {
 	{
 		this.plugins.registPlugin(plugin);
 	}
-
+	
+	public void SetUserOfflineCallBack(DGServerCallBack cb){
+		userOfflineCallBack = cb;
+	}
+	
+	public DGServerCallBack GetUserOfflineCallBack(){
+		return userOfflineCallBack;
+	}
 }
