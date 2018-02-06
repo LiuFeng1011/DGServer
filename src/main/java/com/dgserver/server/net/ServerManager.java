@@ -123,7 +123,14 @@ public class ServerManager {
 		IoSession is = GetSession(msg.getUserInfo());
 		if(is == null){
 			logger.error("cant find session : " + msg.getUserInfo().getUid());
-			logger.error("msg : " + msg.GetProtocol());
+			msg.setUserInfo(null);
+			try{
+				logger.error("msg : " + msg.GetProtocol());
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			
+			
 			return;
 		}
 		if(is.isClosing()) {

@@ -50,7 +50,7 @@ public class MinaCMDDecoder extends CumulativeProtocolDecoder {
 		 * 绑定步骤，第一次玩家登陆时绑定用户数据
 		 */
 		//绑定玩家ID和seesion，第一次登陆游戏时绑定
-		
+
 		if(ServerManager.GetInstance().getServerList().containsKey(protocol)){
 			BaseServer server = ServerManager.GetInstance().getServerList().get(protocol);
 			BaseMessage message = server.GetRequest();
@@ -64,10 +64,13 @@ public class MinaCMDDecoder extends CumulativeProtocolDecoder {
 						userInfo = new UserInfo();
 						userInfo.deserialize(buff);
 						userInfo.setSession(is);
+						ServerManager.GetInstance().BindUserInfo(userInfo);
 					}else {
 						userInfo = ServerManager.GetInstance().getUserInfo(is);
 					}
+					
 					if(userInfo == null){
+						System.out.println("userInfo == null!!!");
 						return true;
 					}
 					message.setUserInfo(userInfo);
@@ -81,6 +84,8 @@ public class MinaCMDDecoder extends CumulativeProtocolDecoder {
 					return true;
 				}
 				
+			}else{
+				System.out.println("message != null");
 			}
 		}
         return true;
